@@ -28,7 +28,7 @@ var topKFrequent = function (nums, k) {
   return Array.from(numSet);
 };
 
-// modified bucket sort
+// bucket sort (object)
 // O(n) Time | O(n) Space
 var topKFrequent = function (nums, k) {
   const numToCount = {};
@@ -56,6 +56,32 @@ var topKFrequent = function (nums, k) {
   }
 
   return output;
+};
+
+// bucket sort (array)
+// O(n) Time | O(n) Space
+var topKFrequent = function (nums, k) {
+  const counter = {};
+
+  for (const num of nums) {
+    counter[num] = (counter[num] ?? 0) + 1;
+  }
+
+  const countToNum = new Array(nums.length + 1).fill().map(count => []);
+
+  for (const [num, count] of Object.entries(counter)) {
+    countToNum[count].push(num);
+  }
+
+  const output = [];
+
+  for (let count = nums.length; count >= 0; count--) {
+    for (const num of countToNum[count]) {
+      output.push(num);
+
+      if (output.length === k) return output;
+    }
+  }
 };
 
 // quick select
