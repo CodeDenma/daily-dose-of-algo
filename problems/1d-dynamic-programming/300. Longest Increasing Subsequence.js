@@ -4,15 +4,15 @@
  */
 var lengthOfLIS = function (nums) {
   function bisectLeft(array, target) {
-    let leftIdx = 0, rightIdx = array.length;
+    let leftIdx = 0, rightIdx = array.length - 1;
 
-    while (leftIdx < rightIdx) {
+    while (leftIdx <= rightIdx) {
       const midIdx = Math.floor((leftIdx + rightIdx) / 2);
 
       if (array[midIdx] < target) {
         leftIdx = midIdx + 1;
       } else {
-        rightIdx = midIdx;
+        rightIdx = midIdx - 1;
       }
 
     }
