@@ -19,6 +19,7 @@ var uniquePaths = function (m, n) {
 };
 
 // dp optimized
+// O(mn) Time | O(n) Space
 var uniquePaths = function (m, n) {
   let row = new Array(n).fill(1);
 
