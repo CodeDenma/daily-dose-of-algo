@@ -2,6 +2,8 @@
  * @param {number[]} nums
  * @return {number}
  */
+
+// O(log(n)) Time | O(1) Space
 var findMin = function (nums) {
   let left = 0,
     right = nums.length - 1,
