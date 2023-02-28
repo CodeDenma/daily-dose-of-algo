@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "jsdom-quokka-plugin": "^1.0.16"
+  }
+}
