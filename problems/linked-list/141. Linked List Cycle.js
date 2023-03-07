@@ -1,3 +1,7 @@
+const _ = require('lodash');
+const { PriorityQueue, MinPriorityQueue, MaxPriorityQueue } = require('@datastructures-js/priority-queue');
+const { Queue } = require('@datastructures-js/queue');
+
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -21,6 +25,24 @@ var hasCycle = function(head) {
     if (slowNode === fastNode) {
       return true;
     }
+  }
+
+  return false
+};
+
+// O(n) Time | O(n) Space
+var hasCycle = function(head) {
+  let node = head;
+  const cache = new Set();
+
+  while (node) {
+    if (cache.has(node)) {
+      return true;
+    }
+
+    cache.add(node);
+
+    node = node.next;
   }
 
   return false
