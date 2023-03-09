@@ -16,8 +16,11 @@ const { Queue } = require('@datastructures-js/queue');
  */
 // O(m + n) Time | O(1) Space
 // m: length of list1 | n: length of list2
-var mergeTwoLists = function(list1, list2) {
-      let node1 = list1, node2 = list2;
+var mergeKLists = function(lists) {
+    let output = lists;
+
+    function mergeTwoLists(listOne, listTwo) {
+      let node1 = listOne, node2 = listTwo;
       const dummyHead = new ListNode(-Infinity)
       let node = dummyHead;
       let val1, val2;
@@ -43,5 +46,22 @@ var mergeTwoLists = function(list1, list2) {
         node.next = node2;
       }
 
-      return dummyHead.next
-};
+      return dummyHead.next;
+    }
+    
+    while (output.length > 1) {
+      const merged = [];
+
+      for (let i = 0; i < output.length; i += 2) {
+        let listOne, listTwo;
+
+        listOne = output[i]
+        i + 1 < output.length ? listTwo = output[i + 1] : listTwo = null;
+
+        merged.push(mergeTwoLists(listOne, listTwo))
+      }
+      output = merged;
+    }
+
+    return output.length ? output[0] : null;
+}
