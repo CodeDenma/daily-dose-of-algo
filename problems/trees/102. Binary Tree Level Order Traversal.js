@@ -10,6 +10,7 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
+// O(n) Time | O(n) Space
 var levelOrder = function (root) {
   const output = [];
 
