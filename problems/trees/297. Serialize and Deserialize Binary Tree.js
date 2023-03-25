@@ -12,6 +12,7 @@
  * @param {TreeNode} root
  * @return {string}
  */
+// O(n) Time | O(n) Space
 var serialize = function (root) {
   const output = [];
 
@@ -36,6 +37,7 @@ var serialize = function (root) {
  * @param {string} data
  * @return {TreeNode}
  */
+// O(n) Time | O(n) Space
 var deserialize = function (data) {
   const values = data.split(",");
   let index = 0;
