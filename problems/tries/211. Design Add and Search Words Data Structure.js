@@ -1,3 +1,4 @@
+// O(1) Time | O(1) Space
 var WordDictionary = function () {
   this.root = {};
 };
@@ -6,6 +7,7 @@ var WordDictionary = function () {
  * @param {string} word
  * @return {void}
  */
+// O(1) Time | O(1) Space
 WordDictionary.prototype.addWord = function (word) {
   if (!this.root.hasOwnProperty(word.length)) {
     this.root[word.length] = new Set();
@@ -18,10 +20,13 @@ WordDictionary.prototype.addWord = function (word) {
  * @param {string} word
  * @return {boolean}
  */
+//
+// O(n^2) Time | O(n) Space
 WordDictionary.prototype.search = function (word) {
   if (!word.length) return false;
+  else if (!this.root.hasOwnProperty(word.length)) return false;
   else if (word.split("").every((char) => char != ".")) {
-    return this.root.hasOwnProperty(word);
+    return this.root[word.length].has(word);
   }
 
   for (const candidate of this.root[word.length]) {
