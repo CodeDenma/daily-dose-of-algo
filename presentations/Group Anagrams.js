@@ -20,7 +20,7 @@ function getMapCounter(iterable) {
   return counter;
 }
 
-const testWord = 'pog';
+const testWord = "pog";
 
 const wordObjCounter = getObjCounter(testWord);
 const wordMapCounter = getMapCounter(testWord);
@@ -58,15 +58,13 @@ console.log(objCounter[node5]);
 console.log(mapCounter.get(node1));
 console.log(mapCounter.get(node5));
 
-
-
-demo('1pog');
+demo("1pog");
 
 function demo(string) {
   const counter = {};
   let left = 0;
 
-  for (let j = 0; j < 'pog'.length; j++) {
+  for (let j = 0; j < "pog".length; j++) {
     const char = string[j];
 
     counter[char] = (counter[char] || 0) + 1;

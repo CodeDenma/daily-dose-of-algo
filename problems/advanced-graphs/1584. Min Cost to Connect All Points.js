@@ -1,7 +1,10 @@
-const _ = require('lodash');
-const { PriorityQueue, MinPriorityQueue, MaxPriorityQueue } = require('@datastructures-js/priority-queue');
-const { Queue } = require('@datastructures-js/queue');
-
+const _ = require("lodash");
+const {
+  PriorityQueue,
+  MinPriorityQueue,
+  MaxPriorityQueue,
+} = require("@datastructures-js/priority-queue");
+const { Queue } = require("@datastructures-js/queue");
 
 /**
  * @param {number[][]} points
@@ -16,7 +19,7 @@ var minCostConnectPoints = function (points) {
   }
 
   function isSamePoints(x1, y1, x2, y2) {
-    return (x1 === x2 && y1 === y2);
+    return x1 === x2 && y1 === y2;
   }
 
   // comparison function for creating each node in the minHeap ({ node, dist })
@@ -61,7 +64,7 @@ var minCostConnectPoints = function (points) {
   return minimumSpanningTreeDistance;
 };
 
-const swap = (heap, i, j) => [heap[i], heap[j]] = [heap[j], heap[i]];
+const swap = (heap, i, j) => ([heap[i], heap[j]] = [heap[j], heap[i]]);
 
 class Heap {
   constructor(array, compare) {
@@ -86,9 +89,14 @@ class Heap {
     let childTwoIdx, idxToSwap;
 
     while (childOneIdx <= endIdx) {
-      parentIdx * 2 + 2 <= endIdx ? childTwoIdx = parentIdx * 2 + 2 : childTwoIdx = -1;
+      parentIdx * 2 + 2 <= endIdx
+        ? (childTwoIdx = parentIdx * 2 + 2)
+        : (childTwoIdx = -1);
 
-      if (childTwoIdx !== -1 && this.compare(heap[childTwoIdx], heap[childOneIdx])) {
+      if (
+        childTwoIdx !== -1 &&
+        this.compare(heap[childTwoIdx], heap[childOneIdx])
+      ) {
         idxToSwap = childTwoIdx;
       } else {
         idxToSwap = childOneIdx;
@@ -135,10 +143,6 @@ class Heap {
   }
 }
 
-
-
-
-
 // Prim's Algorithm Optimized
 // O(n^2) Time | O(n) Space
 var minCostConnectPoints = function (points) {
@@ -147,7 +151,7 @@ var minCostConnectPoints = function (points) {
   }
 
   function isSamePoints(x1, y1, x2, y2) {
-    return (x1 === x2 && y1 === y2);
+    return x1 === x2 && y1 === y2;
   }
 
   const n = points.length; // NOTE: not necessary just looks prettier imo
@@ -162,7 +166,8 @@ var minCostConnectPoints = function (points) {
 
   while (visited.size < n) {
     // placeholders (dummy node, distance) that will be reassigned into the minimum distance node
-    let minNode = -1, minDist = Infinity;
+    let minNode = -1,
+      minDist = Infinity;
 
     // find the minNode, minDist
     for (let node = 0; node < minDists.length; node++) {
@@ -195,11 +200,17 @@ var minCostConnectPoints = function (points) {
   return minimumSpanningTreeDistance;
 };
 
-
-console.log(minCostConnectPoints([[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]])); // 20
+console.log(
+  minCostConnectPoints([
+    [0, 0],
+    [2, 2],
+    [3, 10],
+    [5, 2],
+    [7, 0],
+  ])
+); // 20
 
 // console.log(Number(4 === 4));
-
 
 // Kruskal's Algorithm
 // O(n^2 * log(n)) Time | O(n^2) Space
@@ -258,8 +269,6 @@ class UnionFind {
   }
 }
 
-
-
 var minCostConnectPoints = function (points) {
   const edges = []; // [(weight, node1, node2)]
 
@@ -271,7 +280,11 @@ var minCostConnectPoints = function (points) {
   for (let node = 0; node < points.length; node++) {
     const [x1, y1] = points[node];
 
-    for (let neighborNode = node + 1; neighborNode < points.length; neighborNode++) {
+    for (
+      let neighborNode = node + 1;
+      neighborNode < points.length;
+      neighborNode++
+    ) {
       const [x2, y2] = points[neighborNode];
 
       const dist = getManhattanDistance(x1, y1, x2, y2);
@@ -299,15 +312,6 @@ var minCostConnectPoints = function (points) {
   }
   return output;
 };
-
-
-
-
-
-
-
-
-
 
 // ! https://github.com/datastructures-js/priority-queue/issues/21 LeetCode Compatibility issue with Priority Queue
 // O(n^2 * log(n)) Time | O(n^2) Space
