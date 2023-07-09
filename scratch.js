@@ -54,3 +54,7 @@ console.log('hello world');
 const testSet = new Set();
 
 // testSet.update()
+
+// testSet.add(1, 2, 3);
+
+// console.log(testSet);
